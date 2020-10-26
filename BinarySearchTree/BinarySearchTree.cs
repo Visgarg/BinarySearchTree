@@ -20,7 +20,7 @@ namespace BinarySearchTree
         /// Inserting data in Binary Search Tree
         /// </summary>
         /// <param name="data">data to be entered in binary search tree</param>
-        public void InsertDataInBST(T data) 
+        public Node<T> InsertDataInBST(T data) 
         {
             //Creating and instatiating node with data in constructor
             //now we have to point node to correct addresss so that condition of Binary search tree is satisfied
@@ -69,6 +69,7 @@ namespace BinarySearchTree
                     }
                 }
             }
+            return root;
         }
         /// <summary>
         /// Displaying the data in binary search tree in sorted manner
@@ -113,6 +114,40 @@ namespace BinarySearchTree
             //when condition for left node is not null is called then left counter is incremented, otherwise right counter is incremented
             Console.WriteLine("Count for Left nodes are\t" + leftNodeCount);
             Console.WriteLine("Count for Right nodes are\t" +rightNodeCount);
+        }
+        /// <summary>
+        /// Searching for value in binary search tree
+        /// </summary>
+        /// <param name="root">root element of binary search tree is taken as input</param>
+        /// <param name="searchValue">value to be searched</param>
+        public void SearchInBST(Node<T> root,T searchValue)
+        {
+            //if root is not there, then either the bst is null or after iteration, particular search value is not in bst.
+            if (root == null)
+            {
+                Console.WriteLine("Value is not present in the binary search tree");
+                return;
+            }
+            //after recursion, everytime root value is changed and root value is checked to be equal to search value
+            if (root.data.Equals(searchValue))
+            {
+                Console.WriteLine("searched value is there in the binary search tree");
+                return;
+            }
+            //if root data is bigger than search value, then root is pointed to left node and left node is passed to same method, by doing recursion
+            //if there is no left node, then left will point null and value is not present
+            //if  new root is matched with search value then message is printed
+            if(root.data.CompareTo(searchValue)>0)
+            {
+                root = root.left;
+                SearchInBST(root,searchValue);
+            }
+            //when root element is less then the search value, then root is pointed to right node and passed to same method, doing recursion
+            else
+            {
+                root = root.right;
+                SearchInBST(root,searchValue);
+            }
         }
 
     }
