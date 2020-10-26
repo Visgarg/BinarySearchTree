@@ -13,6 +13,8 @@ namespace BinarySearchTree
     {
         //creating a object of Node class, called root which will save the first data coming from the user
         public Node<T> root;
+        int leftNodeCount = 0;
+        int rightNodeCount = 0;
 
         /// <summary>
         /// Inserting data in Binary Search Tree
@@ -81,6 +83,7 @@ namespace BinarySearchTree
             //this recursion continues until left most node becomes null and value is printed for that particular parent node.
             if (root.left!=null)
             {
+                leftNodeCount++;
                 parent = root;
                 root = root.left;
                 DisplayDatainBST();
@@ -95,9 +98,21 @@ namespace BinarySearchTree
             //for better understanding, do debugging again
             if(root.right!=null)
             {
+                rightNodeCount++;
                 root = root.right;
                 DisplayDatainBST();
             }
+        }
+        /// <summary>
+        /// Getting count of each left and right nodes
+        /// </summary>
+        public void CountOfNodes()
+        {
+            //variables are defined in  class for left node count and right node count
+            //counters for each node are incremented when displaying the value.
+            //when condition for left node is not null is called then left counter is incremented, otherwise right counter is incremented
+            Console.WriteLine("Count for Left nodes are\t" + leftNodeCount);
+            Console.WriteLine("Count for Right nodes are\t" +rightNodeCount);
         }
 
     }

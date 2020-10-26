@@ -16,6 +16,7 @@ namespace BinarySearchTree
             binarySearchTree.InsertDataInBST(232);
 
             binarySearchTree.DisplayDatainBST();
+            binarySearchTree.CountOfNodes();
         }
     }
 }
